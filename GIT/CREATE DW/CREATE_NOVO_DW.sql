@@ -1,0 +1,73 @@
+---------------------------------------
+------ SCHEMA DW -------------------
+--------------------------------------
+/* DW */
+CREATE SCHEMA DW;
+
+---------------------------------------
+-------- DIMENSAO ---------------------
+---------------------------------------
+/* DIM_DESCRICAO */
+CREATE TABLE DW.DIM_DESCRICAO (
+
+DESCRICAO VARCHAR(50)
+);
+
+/* DIM_CATEGORIA */
+CREATE TABLE DW.DIM_CATEGORIA (
+
+CATEGORIA VARCHAR(50)
+);
+
+/* DIM_TIPO */
+CREATE TABLE DW.DIM_TIPO (
+
+TIPO VARCHAR(50)
+);
+
+/* DIM_CONTA */
+CREATE TABLE DW.DIM_CONTA (
+
+CONTA VARCHAR(20)
+);
+
+/* DIM_SITUACAO */
+CREATE TABLE DW.DIM_SITUACAO (
+
+SITUACAO VARCHAR(20)
+
+);
+
+/* DIM_CALENDARIO */
+CREATE TABLE DW.DIM_CALENDARIO (
+
+ID_DATE SERIAL,
+DATA DATE,
+DIA INTEGER,
+MÊS INTEGER,
+ANO INTEGER,
+ANO_MES VARCHAR(10),
+MÊS_ABREV VARCHAR(3),
+MÊS_NOME VARCHAR(10),
+TRIMESTRE INTEGER,
+CONSTRAINT DIM_CALENDARIO_PKEY PRIMARY KEY(ID_DATE)
+
+);
+
+---------------------------------------
+-------- FATO ---------------------
+---------------------------------------
+/* FATO_DESPESA_DIA */
+CREATE TABLE
+    DW.FATO_DESPESA_DIA
+    (
+        ID_DESPESA INTEGER NOT NULL,
+        DESCRICAO CHARACTER VARYING(30) NOT NULL,
+        CATEGORIA CHARACTER VARYING(20) NOT NULL,
+        CONTA CHARACTER VARYING(20) NOT NULL,
+        TIPO CHARACTER VARYING(15) NOT NULL,
+        VALOR NUMERIC(18,6),
+        data DATE,
+        SITUACAO CHARACTER VARYING(10) NOT NULL,
+        PRIMARY KEY (ID_DESPESA)
+    );
