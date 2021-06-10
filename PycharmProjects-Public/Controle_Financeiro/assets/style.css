@@ -1,0 +1,14 @@
+body {
+  background-color: #161D33;
+  margin: 1%;
+}
+
+.create_container {
+  align-items: center;
+  border-radius: 7px;
+  background-color: #1B2444;
+  margin: 5px;
+  padding: 5px;
+  position: relative;
+  box-shadow: 1px 1px 1px 1px #1f2c56;
+}
