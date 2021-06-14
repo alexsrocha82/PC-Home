@@ -3,13 +3,6 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="C:\Users\t113\Downloads\2-Global+terrorism+database+dashboard+in+python+by+plotly+dash-JupyterNotebook\2-Global terrorism database dashboard in python by plotly dash-JupyterNotebook\modified_globalterrorismdb_0718dist.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="\modified_globalterrorismdb_0718dist.csv">
           <value>
             <Attribute>

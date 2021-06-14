@@ -291,4 +291,4 @@ def update_pie_chart(w_countries,w_countries1,select_years):
     }
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False, port=3002, use_reloader=True)

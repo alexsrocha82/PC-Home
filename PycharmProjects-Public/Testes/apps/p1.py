@@ -1,3 +1,4 @@
+import pathlib
 from dash.dependencies import Output, Input
 import dash_core_components as dcc
 import dash_bootstrap_components as dbc
@@ -14,8 +15,11 @@ from app import app
 
 # Connect to your app pages
 
+# get relative data folder
+PATH = pathlib.Path(__file__).parent
+DATA_PATH = PATH.joinpath("../datasets").resolve()
 
-# connect to excel
+# dfv = pd.read_excel(DATA_PATH.joinpath("Fat_teste.xlsx"))
 
 # INICIO MAIN CONTAINER
 layout = dbc.Container([
@@ -67,7 +71,7 @@ def update_graph_live(update):
 @app.callback(Output('tot', 'children'),
               Input('update', 'n_intervals'))
 def update_verde(update):
-    df = pd.read_excel(r'C:\EAI\GIT\Projects\PycharmProjects\Testes\datasets\Fat_teste.xlsx', sheet_name='Folha1',
+    df = pd.read_excel(r'F:\DOCUMENTOS\GIT\PC-Home\PycharmProjects-Public\Testes\datasets\Fat_teste.xlsx', sheet_name='Folha1',
                        engine='openpyxl')
     total = df['VAL_TOT'].sum()
     return [
@@ -78,8 +82,7 @@ def update_verde(update):
 @app.callback(Output('dfdfd', 'children'),
               Input('update', 'n_intervals'))
 def update_amarelo(update):
-    df = pd.read_excel(r'C:\EAI\GIT\Projects\PycharmProjects\Testes\datasets\Fat_teste.xlsx', sheet_name='Folha1',
-                       engine='openpyxl')
+    df = pd.read_excel(DATA_PATH.joinpath("Fat_teste.xlsx"))
     return [
         dbc.Row([
             dbc.Col([
@@ -96,13 +99,15 @@ def update_amarelo(update):
 @app.callback(Output('col_test', 'children'),
               Input('update', 'n_intervals'))
 def update_col_teste(update):
-    teste = pd.read_excel(r'C:\EAI\GIT\Projects\PycharmProjects\Testes\datasets\Fat_teste.xlsx', sheet_name='Folha1',
-                       engine='openpyxl')
+    teste = pd.read_excel(DATA_PATH.joinpath("Fat_teste.xlsx"))
     fat_uf = teste.groupby(['UF'])['VAL_TOT'].sum().reset_index()
     tab = teste[teste['UF'] == 'PR'][['NUM_PED', 'NOME_CLI', 'UF', 'VAL_TOT']].reset_index()
+    colors = ['orange', '#d50000', '#7CB342', '#1565C0']
     return [
         dbc.Container([
+            # row 3
             dbc.Row([
+                # row 3 column 1
                 dbc.Col([
                     dbc.Card(teste['VAL_TOT'].sum(), style={'text-align': 'center'}, color="primary", inverse=True),
                     html.Br(),
@@ -114,6 +119,7 @@ def update_col_teste(update):
                     html.Br(),
                     dbc.Card(teste['VAL_TOT'].sum(), style={'text-align': 'center'}, color="warning", inverse=True),
                 ], width=3),
+                # row 3 column 2
                 dbc.Col([
                     html.Br(),
                     html.P(teste['VAL_TOT'].max(), style={'text-align': 'center', 'color': 'white'}),
@@ -123,6 +129,7 @@ def update_col_teste(update):
                     html.P(teste['VAL_TOT'].max(), style={'text-align': 'center', 'color': 'white'}),
                     html.Br(),
                 ], className='card_container', width=3),
+                # row 3 column 3
                 dbc.Col([
                     dcc.Graph(config={'displayModeBar': 'hover'},
                               style={'height': '250px'},
@@ -141,8 +148,70 @@ def update_col_teste(update):
                               ),
                 ], width=6),
             ]),
+            # row 4
             html.Br(),
             dbc.Row([
+                # row 4 column 1
+                dbc.Col([
+                    dcc.Graph(config={'displayModeBar': 'hover'},
+                              style={'height': '250px'},
+                              figure={
+                                  'data': [go.Pie(
+                                      labels=fat_uf['UF'],
+                                      values=fat_uf['VAL_TOT'],
+                                      marker=dict(colors=colors),
+                                      hoverinfo='label+value+percent',
+                                      textinfo='label+value',
+                                      hole=.7
+
+                                  )],
+                                  'layout': go.Layout(
+                                      title={'text': 'Total Cases: ',
+                                             'y': .93, 'x': 0.5,
+                                             'xanchor': 'center', 'yanchor': 'top'},
+                                      titlefont={'color': 'white', 'size': 18},
+                                      font=dict(family='sans-serif', color='white', size=12),
+                                      hovermode='closest',
+                                      paper_bgcolor='#1f2c56',
+                                      plot_bgcolor='#1f2c56',
+                                      legend={'orientation': 'h', 'bgcolor': '#1f2c56',
+                                              'xanchor': 'center', 'x': 0.5, 'y': -0.7}
+                                  )
+                              }
+                              ),
+                ], width=6),
+                # row 4 column 1
+                dbc.Col([
+                    dcc.Graph(config={'displayModeBar': 'hover'},
+                              style={'height': '250px'},
+                              figure={
+                                  'data': [go.Pie(
+                                      labels=fat_uf['UF'],
+                                      values=fat_uf['VAL_TOT'],
+                                      marker=dict(colors=colors),
+                                      hoverinfo='label+value+percent',
+                                      textinfo='label+value',
+                                      hole=.7
+
+                                  )],
+                                  'layout': go.Layout(
+                                      title={'text': 'Total Cases: ',
+                                             'y': .93, 'x': 0.03,
+                                             'xanchor': 'left', 'yanchor': 'top'},
+                                      titlefont={'color': 'white', 'size': 18},
+                                      font=dict(family='sans-serif', color='white', size=12),
+                                      hovermode='closest',
+                                      paper_bgcolor='#1f2c56',
+                                      plot_bgcolor='#1f2c56',
+                                  )
+                              }
+                              ),
+                ], width=6)
+            ]),
+            html.Br(),
+            # row 5
+            dbc.Row([
+                # row 5 column 1
                 dbc.Col([
                     dt.DataTable(
                         columns=[
