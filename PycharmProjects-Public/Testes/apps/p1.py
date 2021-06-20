@@ -19,17 +19,17 @@ from app import app
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../datasets").resolve()
 
-# dfv = pd.read_excel(DATA_PATH.joinpath("Fat_teste.xlsx"))
+df = pd.read_excel(r'F:\DOCUMENTOS\GIT\PC-Home\PycharmProjects-Public\Testes\datasets\Fat_teste.xlsx', sheet_name='Folha1',
+                   engine='openpyxl')
 
 # INICIO MAIN CONTAINER
 layout = dbc.Container([
-    html.H1(id='tempo'),
     # row 1
     dbc.Row([
         # ROW 1 COLUMN 1
         dbc.Col(html.H3("Faturamento"), width=5),
         # row 1 column 2
-        dbc.Col(dbc.Card('dfdfdf', color="primary", inverse=True)),
+        dbc.Col(dbc.Card('sxsx', color="primary", inverse=True)),
         # row 1 column 3
         dbc.Col(
             dbc.Card('dfddf', color="secondary", inverse=True)
@@ -60,20 +60,18 @@ layout = dbc.Container([
 ], fluid=True)  # FIM MAIN CONTAINER
 
 
-@app.callback(Output('tempo', 'children'),
+@app.callback(Output('tot11', 'children'),
               Input('update', 'n_intervals'))
-def update_graph_live(update):
-    return [
-        html.H1('The time is: ' + str(datetime.datetime.now()))
-    ]
+def update_teste(update):
+    dfv1 = pd.read_excel(DATA_PATH.joinpath("Fat_teste.xlsx"))
+    dfv2 = dfv1[dfv1['UF'] == 'RJ']['VAL_TOT'].sum()
+    return dfv2
 
 
 @app.callback(Output('tot', 'children'),
               Input('update', 'n_intervals'))
 def update_verde(update):
-    df = pd.read_excel(r'F:\DOCUMENTOS\GIT\PC-Home\PycharmProjects-Public\Testes\datasets\Fat_teste.xlsx', sheet_name='Folha1',
-                       engine='openpyxl')
-    total = df['VAL_TOT'].sum()
+    total = df[df['UF'] == 'RJ']['VAL_TOT'].sum()
     return [
         html.P(total)
     ]

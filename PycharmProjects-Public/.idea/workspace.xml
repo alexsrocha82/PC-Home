@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b1eb95f8-5d5c-4fb1-a219-7986af4a1940" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Global_Terrorism/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Multipage_App/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Covid_19/.idea/Covid_19.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Covid_19/.idea/Covid_19.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Covid_19/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Covid_19/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Covid_19/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Covid_19/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Covid_19/venv/pyvenv.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/Covid_19/venv/pyvenv.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Global_Terrorism/.idea/Global_Terrorism.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Global_Terrorism/.idea/Global_Terrorism.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Global_Terrorism/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Global_Terrorism/.idea/csv-plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Global_Terrorism/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Global_Terrorism/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Global_Terrorism/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Global_Terrorism/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Global_Terrorism/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Global_Terrorism/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Global_Terrorism/venv/pyvenv.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/Global_Terrorism/venv/pyvenv.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Multipage_App/.idea/Multipage_App.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Multipage_App/.idea/Multipage_App.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Multipage_App/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Multipage_App/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Multipage_App/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/Multipage_App/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testes/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Testes/.idea/vcs.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1tur636LiaovarW6ePFuOIZfY4W" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b1eb95f8-5d5c-4fb1-a219-7986af4a1940" name="Default Changelist" comment="" />
+      <created>1623629637575</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623629637575</updated>
+    </task>
+    <servers />
+  </component>
+</project>

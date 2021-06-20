@@ -6,6 +6,7 @@ import dash_html_components as html
 import pandas as pd
 import plotly.graph_objs as go
 from datetime import date
+import plotly.express as px
 
 from app import app
 from datasets import consulta
@@ -17,6 +18,7 @@ df = pd.read_excel(DATA_PATH.joinpath("Fat_teste.xlsx"))
 df['DT_EMISSAO2'] = pd.to_datetime(df['DT_EMISSAO'])
 df['MES_NOME'] = df['DT_EMISSAO2'].dt.month_name()
 df['MES'] = df['DT_EMISSAO2'].dt.month
+
 
 # INICIO MAIN CONTAINER
 layout = dbc.Container([
@@ -34,7 +36,7 @@ layout = dbc.Container([
                        min=2019,
                        max=2021,
                        step=1,
-                       value=2021,
+                       value=2019,
                        marks={str(yr): str(yr) for yr in range(2019,
                                                                2021 + 1)},
                        className='dcc_compon')
@@ -315,28 +317,23 @@ def update_var_fat(select_years, update1):
 
 
 # CALLBACK FAT ANUAL BARRA
-@app.callback(Output('bar_ft_uf3', 'children'),
+@app.callback(Output('bar_ft_uf3', 'figure'),
               [Input('update1', 'n_intervals')])
 def update_bar_fat(update1):
     # fat_ano = pd.read_sql(consulta.sql_fat_ano, consulta.conn)
-    fat_ano = df[df['ANO'] == 2019]['VAL_TOT'].sum()
-    return [
-        dcc.Graph(config={'displayModeBar': 'hover'},
-                  style={'height': '250px'},
-                  figure={
-                      'data': [
-                          {'x': fat_ano['ANO'], 'y': fat_ano['VAL_TOT'], 'type': 'bar'}
-                      ],
-                      'layout': {
-                          'title': 'Faturamento anual',
-                          'plot_bgcolor': '#1B2444',
-                          'paper_bgcolor': '#1B2444',
-                          'font': {'color': 'white'},
-                          'margin': dict(t=30, l=0, r=0, b=20),
-                      }
-                  }
-                  ),
-    ]
+    fat_ano = df.groupby(['ANO'])['VAL_TOT'].sum().reset_index()
+    bar_fat_ano = px.bar(fat_ano, y='VAL_TOT', x='ANO',
+                         text='VAL_TOT',
+                         title='Faturado por Ano',
+                         orientation='v')
+    bar_fat_ano.update_traces(textposition='auto')
+    bar_fat_ano.update_layout({'plot_bgcolor': '#E0E0E0',
+                               'paper_bgcolor': '#E0E0E0',
+                               #'font_color': 'white'
+                               })
+    bar_fat_ano.update_yaxes(title=None, showticklabels=False, showgrid=False)
+    bar_fat_ano.update_xaxes(title=None)
+    return bar_fat_ano
 
 
 # CALLBACK GRAFICO BARRA FAT_UF
