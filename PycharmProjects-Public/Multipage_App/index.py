@@ -27,8 +27,8 @@ def display_page(pathname):
     if pathname == '/apps/global_sales':
         return global_sales.layout
     else:
-        return "404 Page Error! Please choose a link"
+        return vgames.layout
 
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=False, port=3004, use_reloader=True)

@@ -5,3 +5,11 @@ import dash_core_components as dcc
 import pandas as pd
 
 from app import app
+
+layout = dbc.Container([
+    dbc.Row([
+        dbc.Col([
+            html.H3('Pagina em construcao')
+        ])
+    ])
+])
